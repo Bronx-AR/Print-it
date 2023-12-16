@@ -51,7 +51,7 @@ function clickPrevSlide() {
 }
 
 function clickNextSlide() {
-	boutonG.addEventListener("click", function() {
+	boutonD.addEventListener("click", function() {
 		indexSlides++;
 		if (indexSlides >= slides.length) {
 			indexSlides = 0;
