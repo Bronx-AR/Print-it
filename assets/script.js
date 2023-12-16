@@ -17,65 +17,67 @@ const slides = [
 	}
 ]
 
-//Appel balises HTML
-const boutonG = document.getElementById("fleche_gauche");
-const boutonD = document.getElementById("fleche_droite");
-const imageItem = document.querySelector('.banner-img');
-const tagLine = document.querySelector("p");
-const dots = document.querySelector('.dots');
-const dotElements = document.getElementsByClassName("dot");
-let indexSlides = 0;
-const baseUrlImage = "assets/images/slideshow";
+document.addEventListener("DOMContentLoaded", function() {
+    const boutonG = document.getElementById("fleche_gauche");
+    const boutonD = document.getElementById("fleche_droite");
+    const imageItem = document.querySelector('.banner-img');
+    const tagLine = document.querySelector("p");
+    const dots = document.querySelector('.dots');
+    const dotElements = document.getElementsByClassName("dot");
+    let indexSlides = 0;
+    const baseUrlImage = "assets/images/slideshow";
 
-//Lestener flèche de gauche et droite
+    function main() {
+        createDots();
+        clickPrevSlide();
+        clickNextSlide();
+    }
 
-function main() {
-	createDots();
-	clickPrevSlide();
-	clickNextSlide();
-}
+    main();
 
-main();
+    function clickPrevSlide() {
+        boutonG.addEventListener("click", function() {
+            if (indexSlides <= 0) {
+                indexSlides = slides.length - 1;
+            } else {
+                indexSlides = indexSlides - 1;
+            }
+            setActiveDot();
+            updateContentSlide();
+            console.log("clique gauche")
+        });
+    }
 
-function clickPrevSlide() {
-	boutonG.addEventListener("click", function() {
-		if (indexSlides <= 0) {
-			indexSlides = slides.length - 1;
-		} else {
-			indexSlides = indexSlides - 1;
-		}
-		setActiveDot();
-		updateContentSlide();
-		console.log("clique gauche")
-	});
-}
+    function clickNextSlide() {
+        boutonD.addEventListener("click", function() {
+            indexSlides++;
+            if (indexSlides >= slides.length) {
+                indexSlides = 0;
+            }
+            setActiveDot();
+            updateContentSlide();
+        });
+    }
 
-function clickNextSlide() {
-	boutonD.addEventListener("click", function() {
-		indexSlides++;
-		if (indexSlides >= slides.length) {
-			indexSlides = 0;
-		}
-		setActiveDot();
-		updateContentSlide();
-	});
-}
+    function updateContentSlide() {
+        imageItem.src = baseUrlImage + slides[indexSlides].image;
+        tagLine.innerHTML = slides[indexSlides].tagLine;
+    }
 
-function updateContentSlide() {
-	imageItem.src = baseUrlImage + slides[indexSlides].image;
-	tagLine.innerHTML = slides[indexSlides].tagLine;
-}
+    function createDots() {
+        for (let i = 0; i < slides.length; i++) {
+            let div = document.createElement("div");
+            div.classList.add("dot");
+            dots.appendChild(div);
+            if (i == indexSlides) div.classList.add("dot_selected");
+        }
+    }
 
-function createDots() {
-	for (let i = 0; i < slides.length; i++) {
-		let div = document.createElement("div");
-		div.classList.add("dot");
-		dots.appendChild(div);
-		if (i == indexSlides) div.classList.add("dot_selected");
-	}
-}
-
-function setActiveDot() {
-	document.querySelector("dot_selected").classList.remove("dot_selected");
-	dotElements[indexSlides].classList.add("dot_selected");
-}
+    function setActiveDot() {
+        const selectedDot = document.querySelector(".dot_selected");
+        if (selectedDot) {
+            selectedDot.classList.remove("dot_selected");
+        }
+        dotElements[indexSlides].classList.add("dot_selected");
+    }
+});
