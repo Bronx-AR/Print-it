@@ -60,9 +60,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updateContentSlide() {
-        imageItem.src = baseUrlImage + slides[indexSlides].image;
-        tagLine.innerHTML = slides[indexSlides].tagLine;
-    }
+		imageItem.src = baseUrlImage + slides[indexSlides].image;
+		tagLine.innerHTML = slides[indexSlides].tagLine;
+	}
 
     function createDots() {
         for (let i = 0; i < slides.length; i++) {
