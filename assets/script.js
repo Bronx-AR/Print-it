@@ -18,8 +18,8 @@ const slides = [
 ]
 
 //Appel balises HTML
-const boutonG = document.getElementById("arrow_left");
-const boutonD = document.getElementById("arrow_right");
+const boutonG = document.getElementById("fleche_gauche");
+const boutonD = document.getElementById("fleche_droite");
 const imageItem = document.querySelector('.banner-img');
 const tagLine = document.querySelector("p");
 const dots = document.querySelector('.dots');
@@ -39,7 +39,7 @@ main();
 
 function clickPrevSlide() {
 	boutonG.addEventListener("click", function() {
-		if (indexSlides <=0) {
+		if (indexSlides <= 0) {
 			indexSlides = slides.length - 1;
 		} else {
 			indexSlides = indexSlides - 1;
