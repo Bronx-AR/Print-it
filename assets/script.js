@@ -18,8 +18,8 @@ const slides = [
 ]
 
 //Appel balises HTML
-const boutonG = document.getElementById("fleche_gauche");
-const boutonD = document.getElementById("fleche_droite");
+const boutonG = document.getElementById("arrow_left");
+const boutonD = document.getElementById("arrow_right");
 const imageItem = document.querySelector('.banner-img');
 const tagLine = document.querySelector("p");
 const dots = document.querySelector('.dots');
