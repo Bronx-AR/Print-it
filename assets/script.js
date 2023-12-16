@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const dots = document.querySelector('.dots');
     const dotElements = document.getElementsByClassName("dot");
     let indexSlides = 0;
-    const baseUrlImage = "assets/images/slideshow";
+    const baseUrlImage = "assets/images/slideshow/";
 
     function main() {
         createDots();
